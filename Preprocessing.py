@@ -13,11 +13,11 @@ def list_folders(folder_path):
     return [ path.join(folder_path,  folder)  for folder in  next(walk( folder_path), (None, None, []))[1] ] 
 
 def list_video_files(folder_path):
-    return [ path.join(folder_path, file)  for file in next(walk(folder_path), (None, None, []))[2] if path.splitext(file)[1] == '.mpg'  ] 
+    return [ path.join(folder_path, file)  for file in next(walk(folder_path), (None, None, []))[2] if path.splitext(file)[1] == '.avi'  ] 
 
 def list_all(folder_path):
     all = next(walk(folder_path), (None, None, []))
-    return [ path.join(folder_path, file)  for file in all[2] if path.splitext(file)[1] == '.mpg'  ] ,  [ path.join(folder_path,  folder)  for folder in all[1] ] 
+    return [ path.join(folder_path, file)  for file in all[2] if path.splitext(file)[1] == '.avi'  ] ,  [ path.join(folder_path,  folder)  for folder in all[1] ] 
 
 
 
@@ -91,8 +91,8 @@ def convert_videos_avi(src):
            
 
 
-video_paths =  list_video_files(path.join(dir_path,  'UCF11_updated_mpg')) 
-
+video_paths =  list_video_files("C:\\Users\\jrsla\\Downloads\\UCF50\\UCF50") 
+print(video_paths)
 #convert_videos_avi( path.join(dir_path,  'UCF11_updated_mpg') )
 
 # cap = cv2.VideoCapture('C:\\Users\\josue.rabanales\\Documents\\action_recognition\\test1\\UCF11_updated_mpg\\UCF11_updated_mpg\\basketball\\v_shooting_01\\v_shooting_01_01.mpg')
@@ -142,8 +142,8 @@ video_paths =  list_video_files(path.join(dir_path,  'UCF11_updated_mpg'))
 for video in video_paths:
     new_folder_path_name = path.splitext(video)[0]
     try:
-        print('Trying to make frames of video '+ new_folder_path_name + " ...")
-        #makedirs(new_folder_path_name)
+        print('Trying to make frames of video '+ video + " in  "+ new_folder_path_name + " ...")
+        makedirs(new_folder_path_name)
         extractImages(video, new_folder_path_name )
         #shutil.rmtree(new_folder_path_name)
         #convert_videos_avi()
