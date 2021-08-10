@@ -13,11 +13,11 @@ def list_folders(folder_path):
     return [ path.join(folder_path,  folder)  for folder in  next(walk( folder_path), (None, None, []))[1] ] 
 
 def list_video_files(folder_path):
-    return [ path.join(folder_path, file)  for file in next(walk(folder_path), (None, None, []))[2] if path.splitext(file)[1] == '.avi'  ] 
+    return [ path.join(folder_path, file)  for file in next(walk(folder_path), (None, None, []))[2] if path.splitext(file)[1] == '.mpg'  ] 
 
 def list_all(folder_path):
     all = next(walk(folder_path), (None, None, []))
-    return [ path.join(folder_path, file)  for file in all[2] if path.splitext(file)[1] == '.avi'  ] ,  [ path.join(folder_path,  folder)  for folder in all[1] ] 
+    return [ path.join(folder_path, file)  for file in all[2] if path.splitext(file)[1] == '.mpg'  ] ,  [ path.join(folder_path,  folder)  for folder in all[1] ] 
 
 
 
@@ -91,7 +91,7 @@ def convert_videos_avi(src):
            
 
 
-video_paths =  list_video_files("C:\\Users\\jrsla\\Downloads\\UCF50\\UCF50") 
+video_paths =  list_video_files("C:\\Users\\josue.rabanales\\Downloads\\UCF11_updated_mpg\\UCF11_updated_mpg") 
 print(video_paths)
 #convert_videos_avi( path.join(dir_path,  'UCF11_updated_mpg') )
 
